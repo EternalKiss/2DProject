@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d847df530c3d82f4ab3c9eec0bf63128
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140764
+  packageName: 2D puzzle blocks textures
+  packageVersion: 1.0
+  assetPath: Assets/2DPuzzleBlocks/Assets/Prefabs/Blocks Controller.prefab
+  uploadId: 302355

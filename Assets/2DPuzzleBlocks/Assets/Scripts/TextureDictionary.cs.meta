@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0bc131009a319ac4cb55c733c47ab324
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140764
+  packageName: 2D puzzle blocks textures
+  packageVersion: 1.0
+  assetPath: Assets/2DPuzzleBlocks/Assets/Scripts/TextureDictionary.cs
+  uploadId: 302355

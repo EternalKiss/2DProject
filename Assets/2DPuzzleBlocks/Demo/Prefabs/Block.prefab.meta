@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d229efe702498e441849a089e379e84a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140764
+  packageName: 2D puzzle blocks textures
+  packageVersion: 1.0
+  assetPath: Assets/2DPuzzleBlocks/Demo/Prefabs/Block.prefab
+  uploadId: 302355

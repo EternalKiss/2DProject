@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4798892be4a9f2c4ab08578d5efa830b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140764
+  packageName: 2D puzzle blocks textures
+  packageVersion: 1.0
+  assetPath: Assets/2DPuzzleBlocks/Demo/Scripts/SceneController.cs
+  uploadId: 302355
