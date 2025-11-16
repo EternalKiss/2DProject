@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _repeatRate;
     [SerializeField] private int _poolCapacity = 3;
     [SerializeField] private int _poolMaxSize = 3;
+    [SerializeField] private CoinPickUp _collector;
 
     private ObjectPool<Coin> _coinsPool;
     private Coroutine _spawnCoroutine;
@@ -16,12 +17,13 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         CreatePool();
+        _collector.onPicked += ReleaseCoin;
     }
 
     private ObjectPool<Coin> CreatePool()
     {
         _coinsPool = new ObjectPool<Coin>(
-            createFunc: () => Instantiate(_coinPrefab),
+            createFunc: () => Instantiate(),
             actionOnGet: (coin) => GetOnAction(coin),
             actionOnRelease: coin => OnRelease(coin),
             actionOnDestroy: (coin) => Destroy(coin.gameObject),
@@ -50,25 +52,42 @@ public class Spawner : MonoBehaviour
     {
         var wait = new WaitForSeconds(_repeatRate);
 
-        while(enabled)
+        while (enabled)
         {
             yield return wait;
 
             Transform selectedSpawner = GetSpawnPosition();
 
-            if(_coinsPool.CountActive < _poolMaxSize)
+            if (_coinsPool.CountActive < _poolMaxSize)
             {
                 _coinsPool.Get();
             }
         }
     }
 
+    private Coin Instantiate()
+    {
+        return Instantiate(_coinPrefab);
+    }
+
     private void GetOnAction(Coin coin)
     {
         Transform spawnTransform = GetSpawnPosition();
-        coin.SetPool(_coinsPool);
         coin.transform.position = spawnTransform.position;
         coin.gameObject.SetActive(true);
+    }
+
+    private void ReleaseCoin(Coin coin)
+    {
+        Debug.Log($"Монета собрана: {coin.gameObject.name}");
+        CoinPickUp pickUp = coin.GetComponent<CoinPickUp>();
+
+        if (pickUp != null)
+        {
+            pickUp.onPicked -= ReleaseCoin;
+        }
+
+        _coinsPool.Release(coin);
     }
 
     private void OnRelease(Coin coin)
@@ -80,5 +99,14 @@ public class Spawner : MonoBehaviour
     {
         int randomIndex = Random.Range(0, _spawners.Length);
         return _spawners[randomIndex];
+    }
+
+    private void OnDestroy()
+    {
+        if (_coinsPool != null)
+            _coinsPool.Clear();
+
+        if (_collector != null)
+            _collector.onPicked -= OnRelease;
     }
 }

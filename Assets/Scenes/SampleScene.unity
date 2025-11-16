@@ -3918,6 +3918,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4037,12 +4038,26 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.5033336, y: 0.75666666, z: -16.866667}
-  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1044042345}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa58936fbe215446aba6c31bb726a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  _target: {fileID: 1044042345}
+  _offset: {x: 0, y: 5, z: -40}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,9 +4154,13 @@ GameObject:
   - component: {fileID: 1044042344}
   - component: {fileID: 1044042348}
   - component: {fileID: 1044042347}
-  - component: {fileID: 1044042346}
   - component: {fileID: 1044042350}
   - component: {fileID: 1044042351}
+  - component: {fileID: 1044042352}
+  - component: {fileID: 1044042353}
+  - component: {fileID: 1044042356}
+  - component: {fileID: 1044042355}
+  - component: {fileID: 1044042354}
   m_Layer: 0
   m_Name: HeroKnight
   m_TagString: Player
@@ -4219,29 +4238,9 @@ Transform:
   m_LocalPosition: {x: -15.2, y: -4.9, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 519420032}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1044042346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044042343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b142ecde8ffa84094500774824ce4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Controller
-  _speed: 7
-  _jumpForce: 30
-  _groundCheckOffSet: {x: 0, y: 0.3, z: 0}
-  _characterSprite: {fileID: 1044042344}
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!50 &1044042347
 Rigidbody2D:
   serializedVersion: 5
@@ -4349,6 +4348,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2aa794dce9d1c1418c60e516ef4e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimations
+--- !u!114 &1044042352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044042343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b408a54a70ec3ed4e8e256c11cfcd19c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotater
+--- !u!114 &1044042353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044042343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23845b7b938362944bcf1099aa9864bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IsGrounded
+  _groundCheckOffSet: {x: 0, y: 1.5, z: 0}
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1044042354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044042343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856650753778a964abab1e9195ccb7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mover
+  _moveSpeed: 11
+  _jumpForce: 30
+--- !u!114 &1044042355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044042343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e796b64a1e4b645803d26c9cc9f54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UserInputReader
+--- !u!114 &1044042356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044042343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989a4e66385fbce4e82fa795987c2ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  _characterSprite: {fileID: 1044042344}
+  _inputReader: {fileID: 1044042355}
+  _rotater: {fileID: 1044042352}
+  _mover: {fileID: 1044042354}
+  _groundDetector: {fileID: 1044042353}
+  _characterAnimations: {fileID: 1044042351}
 --- !u!1 &1167335425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4406,6 +4477,8 @@ GameObject:
   - component: {fileID: 1175655664}
   - component: {fileID: 1175655668}
   - component: {fileID: 1175655667}
+  - component: {fileID: 1175655669}
+  - component: {fileID: 1175655670}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -4426,10 +4499,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _moveSpeed: 5
-  _targets:
-  - {fileID: 257587488}
-  - {fileID: 1469256703}
   _characterSprite: {fileID: 1175655665}
+  _rotater: {fileID: 1175655669}
+  _patroller: {fileID: 1175655670}
 --- !u!212 &1175655665
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4567,6 +4639,33 @@ CapsuleCollider2D:
   m_Offset: {x: -0.031119728, y: 0.694887}
   m_Size: {x: 0.92886204, y: 1.3378578}
   m_Direction: 0
+--- !u!114 &1175655669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175655663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b408a54a70ec3ed4e8e256c11cfcd19c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotater
+--- !u!114 &1175655670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175655663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a2c70a1ca2d7b48a9753ea50c40abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Patroller
+  _wayPoints:
+  - {fileID: 257587488}
+  - {fileID: 1469256703}
 --- !u!1 &1419758458
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f2deda3dcf8c847ba72c38fb8e13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  _coinPrefab: {fileID: -5681444621997283935, guid: 047fbed63e15a3f47937d596aefc3c1c, type: 3}
+  _coinPrefab: {fileID: -5681444621997283935, guid: d33ca6fb3b43d644483d18dbbb2b9529, type: 3}
   _spawners:
   - {fileID: 150546969}
   - {fileID: 367455439}
@@ -4754,3 +4853,4 @@ SceneRoots:
   - {fileID: 1175655666}
   - {fileID: 257587488}
   - {fileID: 1469256703}
+  - {fileID: 519420032}
