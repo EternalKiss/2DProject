@@ -32,9 +32,9 @@ public class CharacterAnimations : MonoBehaviour
 
     public void Jump()
     {
-        if (_animator.GetBool("IsFlying") == false)
+        if (_animator.GetBool(_isFlyingHash) == false)
         {
-            _animator.SetTrigger("Jump");
+            _animator.SetTrigger(_jumpHash);
         }
     }
 
