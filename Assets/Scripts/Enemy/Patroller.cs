@@ -5,7 +5,23 @@ public class Patroller : MonoBehaviour
 {
     [SerializeField] private List<Transform> _wayPoints = new List<Transform>();
 
+    private TargetDetector _targetDetector;
     private int _currentWaypointIndex = 0;
+
+    private void Awake()
+    {
+        _targetDetector = GetComponent<TargetDetector>();
+    }
+
+    private void OnEnable()
+    {
+        _targetDetector.OnTargetDetect += DetectNewTarget;
+    }
+
+    private void OnDisable()
+    {
+        _targetDetector.OnTargetDetect -= DetectNewTarget;
+    }
 
     public void SetNewWayPoint()
     {
@@ -17,15 +33,34 @@ public class Patroller : MonoBehaviour
         }
     }
 
-    public float CalculateDistance()
+    public float CalculateDistance(Vector3 targetPosition)
     {
-        Transform currentTarget = _wayPoints[_currentWaypointIndex];
-        Vector2 toTarget = currentTarget.position - transform.position;
-        return toTarget.magnitude;
+        return Vector2.Distance(transform.position, targetPosition);
     }
 
     public Vector3 GetCurrentWaypointPosition()
     {
+        if (_wayPoints.Count == 0)
+        {
+            return transform.position;
+        }
+
         return _wayPoints[_currentWaypointIndex].position;
+    }
+
+    public void DetectNewTarget(Transform target)
+    {
+        Enemy enemy = GetComponent<Enemy>();
+
+        if (enemy != null)
+        {
+            enemy.SetTarget(target);
+            Debug.Log("Цель обнаружена! ");
+        }
+        else
+        {
+            enemy.ClearTarget(target);
+            Debug.Log("Цель потеряна!");
+        }
     }
 }
