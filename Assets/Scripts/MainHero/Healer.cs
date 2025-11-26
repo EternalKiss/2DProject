@@ -45,9 +45,6 @@ public class Healer : MonoBehaviour
         {
             float newHealth = healthComponent.CurrentHealth + _heal;
             healthComponent.SetHealth(newHealth);
-
-            Debug.Log($"{gameObject.name} восстановил {_heal} HP. " +
-                  $"Текущее: {healthComponent.CurrentHealth}/{healthComponent.MaxHealth}");
         }
     }
 }

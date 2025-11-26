@@ -17,7 +17,6 @@ public class Health : MonoBehaviour
     public void SetHealth(float value)
     {
         _currentHealth = Mathf.Clamp(value, 0f, _maxHealth);
-        Debug.Log(_currentHealth);
     }
 
     public void SetMaxHealth(float newMax)

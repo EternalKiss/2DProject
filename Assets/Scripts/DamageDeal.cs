@@ -30,7 +30,6 @@ public class DamageDeal : MonoBehaviour
             if (damageable != null)
             {
                 damageable.TakeDamage(damage, gameObject);
-                Debug.Log($"Нанесён урон {damage} цели {hit.collider.name}");
 
                 _nextAttackTime = Time.time + attackDelay;
                 return true;
