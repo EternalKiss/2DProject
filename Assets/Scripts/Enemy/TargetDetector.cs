@@ -8,7 +8,7 @@ public class TargetDetector : MonoBehaviour
     private Transform _targetPlace;
     private float _detectionDistance = 8f;
 
-    public event Action<Transform> OnTargetDetect;
+    public event Action<Transform> TargetDetected;
 
     public void Detector()
     {
@@ -17,16 +17,15 @@ public class TargetDetector : MonoBehaviour
 
         Vector2 rayOrigin = (Vector2)transform.position + new Vector2(0, 1.5f);
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, _detectionDistance, _targetLayer);
-        Debug.DrawRay(rayOrigin, direction * _detectionDistance, Color.red, 0.5f);
 
         if (hit.collider != null && hit.collider != gameObject)
         {
             _targetPlace = hit.collider.transform;
-            OnTargetDetect?.Invoke(_targetPlace);
+            TargetDetected?.Invoke(_targetPlace);
         }
         else
         {
-            OnTargetDetect?.Invoke(null);
+            TargetDetected?.Invoke(null);
         }
     }
 }

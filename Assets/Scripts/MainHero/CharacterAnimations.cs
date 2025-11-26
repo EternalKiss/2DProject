@@ -27,12 +27,6 @@ public class CharacterAnimations : MonoBehaviour
         _attackHash = Animator.StringToHash(AttackTrigger);
     }
 
-    private void Update()
-    {
-        bool isRunning = _animator.GetBool(_isRunningHash);
-        bool isFlying = _animator.GetBool(_isFlyingHash);
-    }
-
     public void Jump()
     {
         if (_animator.GetBool(_isFlyingHash) == false)
@@ -57,10 +51,12 @@ public class CharacterAnimations : MonoBehaviour
     public void SetIsFlying(bool isFlying)
     {
         _animator.SetBool(_isFlyingHash, isFlying);
+        isFlying = _animator.GetBool(_isFlyingHash);
     }
 
     public void SetIsRunning(bool isRunning)
     {
         _animator.SetBool(_isRunningHash, isRunning);
+        isRunning = _animator.GetBool(_isRunningHash);
     }
 }

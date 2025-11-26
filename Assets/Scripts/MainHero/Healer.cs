@@ -6,23 +6,22 @@ public class Healer : MonoBehaviour
 
     private ItemPickUp _itemPicked;
     private IDamageable _target;
-    private Health _health;
 
     private void Awake()
     {
-        _health = GetComponent<Health>();
+
         _itemPicked = GetComponent<ItemPickUp>();
         _target = GetComponent<IDamageable>();
     }
 
     private void OnEnable()
     {
-        _itemPicked.onPicked += TryHeal;
+        _itemPicked.ItemPicked += TryHeal;
     }
 
     private void OnDisable()
     {
-        _itemPicked.onPicked -= TryHeal;
+        _itemPicked.ItemPicked -= TryHeal;
     }
 
     public void TryHeal(Item item)
@@ -35,7 +34,7 @@ public class Healer : MonoBehaviour
 
     private bool IsHealthPackPicked(Item item)
     {
-        return (item.TryGetComponent<FirstAidKit>(out FirstAidKit healthPack));
+        return (item.TryGetComponent<FirstAidKit>(out _));
     }
 
     private void ApplyHeal()

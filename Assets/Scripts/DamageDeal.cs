@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DealDamage : MonoBehaviour
+public class DamageDeal : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayers;
 
@@ -22,7 +22,6 @@ public class DealDamage : MonoBehaviour
 
         Vector2 rayOrigin = (Vector2)transform.position + new Vector2(0, 1.5f);
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, attackDistance, targetLayers);
-        Debug.DrawRay(rayOrigin, direction * attackDistance, Color.red, 0.5f);
 
         if (hit.collider != null)
         {

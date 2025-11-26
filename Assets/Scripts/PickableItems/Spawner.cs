@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < _itemsPrefab.Length; i++)
         {
             CreatePool(_itemsPrefab[i]);
-            _collector.onPicked += ReleaseItem;
+            _collector.ItemPicked += ReleaseItem;
         }
 
     }
@@ -125,7 +125,7 @@ public class Spawner : MonoBehaviour
 
         if (pickUp != null)
         {
-            pickUp.onPicked -= ReleaseItem;
+            pickUp.ItemPicked -= ReleaseItem;
         }
 
         if (_itemsPool.ContainsKey(item.Type))
@@ -160,7 +160,7 @@ public class Spawner : MonoBehaviour
 
         if (_collector != null)
         {
-            _collector.onPicked -= OnRelease;
+            _collector.ItemPicked -= OnRelease;
         }
     }
 }

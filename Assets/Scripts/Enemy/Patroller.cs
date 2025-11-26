@@ -15,12 +15,12 @@ public class Patroller : MonoBehaviour
 
     private void OnEnable()
     {
-        _targetDetector.OnTargetDetect += DetectNewTarget;
+        _targetDetector.TargetDetected += DetectNewTarget;
     }
 
     private void OnDisable()
     {
-        _targetDetector.OnTargetDetect -= DetectNewTarget;
+        _targetDetector.TargetDetected -= DetectNewTarget;
     }
 
     public void SetNewWayPoint()
@@ -55,12 +55,10 @@ public class Patroller : MonoBehaviour
         if (enemy != null)
         {
             enemy.SetTarget(target);
-            Debug.Log("Цель обнаружена! ");
         }
         else
         {
             enemy.ClearTarget(target);
-            Debug.Log("Цель потеряна!");
         }
     }
 }

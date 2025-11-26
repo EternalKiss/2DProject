@@ -1,9 +1,11 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UserInputReader : MonoBehaviour
 {
     public const string Horizontal = "Horizontal";
+
+    [SerializeField] private KeyCode AttackKey = KeyCode.F;
+    [SerializeField] private KeyCode JumpKey = KeyCode.Space;
 
     private bool _isJump;
     private bool _isAttack;
@@ -16,12 +18,12 @@ public class UserInputReader : MonoBehaviour
     {
         Direction = Input.GetAxis(Horizontal);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(JumpKey))
         {
-               _isJump = true;
+            _isJump = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(AttackKey))
         {
             _isAttack = true;
         }

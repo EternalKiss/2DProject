@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private Patroller _patroller;
     [SerializeField] private AnimationsController _animationsController;
     [SerializeField] private TargetDetector _detector;
-    [SerializeField] private DealDamage _dealDamage;
+    [SerializeField] private DamageDeal _dealDamage;
     [SerializeField] private Health _health;
 
     private bool _isRunning;
@@ -32,44 +32,36 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (_target != null)
         {
-
             Vector3 targetPosition = _target.position;
-            float distanceToTarget = Vector2.Distance(transform.position, targetPosition);
 
             float directionX = Mathf.Sign(targetPosition.x - transform.position.x);
             _rotater.Rotate(directionX);
 
-            if (distanceToTarget > _stopDistance)
+            if (_patroller.CalculateDistance(targetPosition) > _stopDistance)
             {
-                transform.position = Vector2.MoveTowards(
-                    transform.position,
-                    targetPosition,
-                    _moveSpeed * Time.deltaTime
-                );
+                MoveToTarget(targetPosition);
             }
             else
             {
                 if (_dealDamage.TryAttack(_damage, _attackDistance, directionX, _attackDelay))
+                {
                     _animationsController.Attack();
+                }
             }
         }
         else
         {
             Vector3 currentTargetPosition = _patroller.GetCurrentWaypointPosition();
-            float distanceToTarget = _patroller.CalculateDistance(currentTargetPosition);
 
-            if (distanceToTarget > _stopDistance)
+            if (_patroller.CalculateDistance(currentTargetPosition) > _stopDistance)
             {
-                transform.position = Vector2.MoveTowards(
-                    transform.position,
-                    currentTargetPosition,
-                    _moveSpeed * Time.deltaTime
-                );
+                MoveToTarget(currentTargetPosition);
             }
             else
             {
                 Vector2 nextDirection = (Vector2)transform.position - (Vector2)currentTargetPosition;
                 float directionX = Mathf.Sign(nextDirection.x);
+
                 _patroller.SetNewWayPoint();
                 _rotater.Rotate(directionX);
             }
@@ -77,6 +69,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
         _isRunning = _moveSpeed > 0;
         _animationsController.SetIsRunning(_isRunning);
+    }
+
+    private void MoveToTarget (Vector3 currentTarget)
+    {
+        transform.position = Vector2.MoveTowards(transform.position, currentTarget, _moveSpeed * Time.deltaTime);
     }
 
     public void SetTarget(Transform target)

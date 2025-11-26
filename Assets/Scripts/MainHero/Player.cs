@@ -5,9 +5,10 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private UserInputReader _inputReader;
     [SerializeField] private Rotater _rotater;
     [SerializeField] private Mover _mover;
+    [SerializeField] private Jumper _jumper;
     [SerializeField] private GroundDetector _groundDetector;
     [SerializeField] private CharacterAnimations _characterAnimations;
-    [SerializeField] private DealDamage _dealDamage;
+    [SerializeField] private DamageDeal _dealDamage;
     [SerializeField] private Health _health;
 
     private float _damage = 15;
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (_inputReader.IsJumpPressed && _groundDetector.IsGround)
         {
-            _mover.Jump(_rigidbody);
+            _jumper.Jump(_rigidbody);
             _characterAnimations.Jump();
         }
 
@@ -45,9 +46,9 @@ public class Player : MonoBehaviour, IDamageable
             _characterAnimations.Attack();
         }
 
-        _characterAnimations.SetIsFlying(_groundDetector.IsFlying(_rigidbody));
         _isRunning = _inputReader.Direction != 0;
         _characterAnimations.SetIsRunning(_isRunning);
+        _characterAnimations.SetIsFlying(_groundDetector.IsFlying(_rigidbody));
     }
 
     public void TakeDamage(float damage, GameObject attacker)
