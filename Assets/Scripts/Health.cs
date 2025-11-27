@@ -14,12 +14,12 @@ public class Health : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
-    public void SetHealth(float value)
+    public void SetValue(float value)
     {
         _currentHealth = Mathf.Clamp(value, 0f, _maxHealth);
     }
 
-    public void SetMaxHealth(float newMax)
+    public void SetMaxValue(float newMax)
     {
         _maxHealth = newMax;
         if (_currentHealth > _maxHealth)

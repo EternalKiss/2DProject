@@ -6,9 +6,10 @@ public class GroundDetector : MonoBehaviour
     [SerializeField] private Vector3 _groundCheckOffSet;
     [SerializeField] private LayerMask _groundMask;
 
+    public bool IsGround { get; private set; }
+
     private Coroutine _activeCoroutine;
 
-    public bool IsGround { get; private set; }
 
     private void OnEnable()
     {

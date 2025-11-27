@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage, GameObject attacker)
     {
-        _health.SetHealth(_health.CurrentHealth - damage);
+        _health.SetValue(_health.CurrentHealth - damage);
 
         if (!IsAlive) Destroy(gameObject);
     }

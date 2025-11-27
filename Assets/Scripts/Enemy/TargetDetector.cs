@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TargetDetector : MonoBehaviour
 {
-    [SerializeField] LayerMask _targetLayer;
+    [SerializeField] private LayerMask _targetLayer;
 
     private Transform _targetPlace;
     private float _detectionDistance = 8f;

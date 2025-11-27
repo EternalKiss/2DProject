@@ -55,7 +55,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (!IsAlive) return;
 
-        _health.SetHealth(_health.CurrentHealth - damage);
+        _health.SetValue(_health.CurrentHealth - damage);
 
         if (!IsAlive)
         {

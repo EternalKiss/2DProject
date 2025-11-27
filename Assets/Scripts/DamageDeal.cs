@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageDeal : MonoBehaviour
 {
-    [SerializeField] private LayerMask targetLayers;
+    [SerializeField] private LayerMask _targetLayers;
 
     private float _nextAttackTime;
 
@@ -21,7 +21,7 @@ public class DamageDeal : MonoBehaviour
         Vector2 direction = moveDirection > 0 ? Vector2.right : Vector2.left;
 
         Vector2 rayOrigin = (Vector2)transform.position + new Vector2(0, 1.5f);
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, attackDistance, targetLayers);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, attackDistance, _targetLayers);
 
         if (hit.collider != null)
         {

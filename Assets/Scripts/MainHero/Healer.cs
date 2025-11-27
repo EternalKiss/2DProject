@@ -44,7 +44,7 @@ public class Healer : MonoBehaviour
         if (healthComponent != null)
         {
             float newHealth = healthComponent.CurrentHealth + _heal;
-            healthComponent.SetHealth(newHealth);
+            healthComponent.SetValue(newHealth);
         }
     }
 }
