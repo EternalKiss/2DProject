@@ -6,16 +6,15 @@ public class AnimationsController : MonoBehaviour
     private const string IsRunningParam = "IsRunning";
     private const string AttackTrigger = "Attack";
 
+    [SerializeField] private Animator _animator;
+
     private int _speedHash;
     private int _isRunningHash;
     private int _attackHash;
 
-    private Animator _animator;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-
         _speedHash = Animator.StringToHash(SpeedParam);
         _isRunningHash = Animator.StringToHash(IsRunningParam);
         _attackHash = Animator.StringToHash(AttackTrigger);

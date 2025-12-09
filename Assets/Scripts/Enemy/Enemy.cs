@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private Patroller _patroller;
     [SerializeField] private AnimationsController _animationsController;
     [SerializeField] private TargetDetector _detector;
-    [SerializeField] private DamageDeal _dealDamage;
+    [SerializeField] private DamageDealer _dealDamage;
     [SerializeField] private Health _health;
 
     private bool _isRunning;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private Transform _target;
 
     public Health GetHealthComponent() => _health;
-    public bool IsAlive => _health.CurrentHealth > 0;
+    public bool IsAlive => _health.CheckValidHealth() > 0;
 
     private void FixedUpdate()
     {
@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage, GameObject attacker)
     {
-        _health.SetValue(_health.CurrentHealth - damage);
+        _health.TakeDamage(damage);
 
         if (!IsAlive) Destroy(gameObject);
     }

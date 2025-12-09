@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageDeal : MonoBehaviour
+public class DamageDealer : MonoBehaviour
 {
     [SerializeField] private LayerMask _targetLayers;
 

@@ -8,17 +8,17 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private Jumper _jumper;
     [SerializeField] private GroundDetector _groundDetector;
     [SerializeField] private CharacterAnimations _characterAnimations;
-    [SerializeField] private DamageDeal _dealDamage;
+    [SerializeField] private DamageDealer _dealDamage;
     [SerializeField] private Health _health;
 
     private float _damage = 15;
-    private float _attackDistance = 5f;
+    private float _attackDistance = 6f;
     private float _attackDelay = 0.1f;
     private Rigidbody2D _rigidbody;
     private bool _isRunning;
 
     public Health GetHealthComponent() => _health;
-    public bool IsAlive => _health.CurrentHealth > 0;
+    public bool IsAlive => _health.CheckValidHealth() > 0;
 
     private void Awake()
     {
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (!IsAlive) return;
 
-        _health.SetValue(_health.CurrentHealth - damage);
+        _health.TakeDamage(damage);
 
         if (!IsAlive)
         {

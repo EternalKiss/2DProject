@@ -4,6 +4,7 @@ using UnityEngine;
 public class TargetDetector : MonoBehaviour
 {
     [SerializeField] private LayerMask _targetLayer;
+    [SerializeField] private Rotater _rotater;
 
     private Transform _targetPlace;
     private float _detectionDistance = 8f;
@@ -13,7 +14,7 @@ public class TargetDetector : MonoBehaviour
     public void Detector()
     {
         bool isFacingRight = Mathf.Approximately(transform.rotation.eulerAngles.y, 0f);
-        Vector2 direction = isFacingRight ? Vector2.right : Vector2.left;
+        Vector2 direction = _rotater.IsFacingRight ? Vector2.right : Vector2.left;
 
         Vector2 rayOrigin = (Vector2)transform.position + new Vector2(0, 1.5f);
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, _detectionDistance, _targetLayer);

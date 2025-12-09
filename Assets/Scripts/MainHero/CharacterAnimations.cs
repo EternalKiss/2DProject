@@ -8,18 +8,17 @@ public class CharacterAnimations : MonoBehaviour
     private const string JumpTrigger = "Jump";
     private const string AttackTrigger = "Attack";
 
+   [SerializeField] private Animator _animator;
+
     private int _speedHash;
     private int _isRunningHash;
     private int _isFlyingHash;
     private int _jumpHash;
     private int _attackHash;
 
-    private Animator _animator;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-
         _speedHash = Animator.StringToHash(SpeedParam);
         _isRunningHash = Animator.StringToHash(IsRunningParam);
         _isFlyingHash = Animator.StringToHash(IsFlyingParam);
