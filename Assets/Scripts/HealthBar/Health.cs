@@ -53,9 +53,4 @@ public class Health : MonoBehaviour
 
         return _currentHealth;
     }
-
-    public float[] SetDefault()
-    {
-        return Default;
-    }
 }

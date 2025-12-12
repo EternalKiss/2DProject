@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Healer : MonoBehaviour
 {
-    private float _heal = 40f;
-
     private ItemPickUp _itemPicked;
     private IDamageable _target;
 
@@ -24,26 +22,13 @@ public class Healer : MonoBehaviour
         _itemPicked.ItemPicked -= TryHeal;
     }
 
-    public void TryHeal(Item item)
+    private void TryHeal(Item item)
     {
-        if (IsHealthPackPicked(item))
+        IUsable usableItem = item.GetComponent<IUsable>();
+
+        if (usableItem != null)
         {
-            ApplyHeal();
-        }
-    }
-
-    private bool IsHealthPackPicked(Item item)
-    {
-        return (item.TryGetComponent<FirstAidKit>(out _));
-    }
-
-    private void ApplyHeal()
-    {
-        Health healthComponent = _target.GetHealthComponent();
-
-        if (healthComponent != null)
-        {
-            healthComponent.Heal(_heal);
+            usableItem.Use(_target);
         }
     }
 }

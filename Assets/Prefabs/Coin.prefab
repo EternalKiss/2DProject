@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 21200000}
   - component: {fileID: 8362419512316619882}
-  - component: {fileID: 2184677383226097270}
   - component: {fileID: 1856289726631733255}
+  - component: {fileID: -8052402821759121341}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -129,18 +129,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1.015625
---- !u!114 &2184677383226097270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d2fe44d6fd2b941a33ca88d85b23f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Item
 --- !u!114 &1856289726631733255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +141,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69505bea2579e6549a18bef00d2161bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
+  Type: 0
+--- !u!114 &-8052402821759121341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d2fe44d6fd2b941a33ca88d85b23f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Coin
+  Type: 0

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private CharacterAnimations _characterAnimations;
     [SerializeField] private DamageDealer _dealDamage;
     [SerializeField] private Health _health;
+    [SerializeField] private VampirismAbillity _vampire;
 
     private float _damage = 15;
     private float _attackDistance = 6f;
@@ -44,6 +45,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             _dealDamage.TryAttack(_damage, _attackDistance, _inputReader.Direction, _attackDelay);
             _characterAnimations.Attack();
+        }
+
+       if(_inputReader.IsCastPressed)
+        {
+            _vampire.ActivateAbility();
         }
 
         _isRunning = _inputReader.Direction != 0;

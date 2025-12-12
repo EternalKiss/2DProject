@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8732124975866204349}
   - component: {fileID: 882069289327528686}
   - component: {fileID: 8413130337670083604}
-  - component: {fileID: 5478599142321559297}
   - component: {fileID: 2802032661213167863}
+  - component: {fileID: -5199449313680099891}
   m_Layer: 0
   m_Name: FirstAidKit_0
   m_TagString: HealthPack
@@ -139,18 +139,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.15, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &5478599142321559297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643907849748072561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2e1cc021f916946ab5467068c7d7b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FirstAidKit
 --- !u!114 &2802032661213167863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,4 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69505bea2579e6549a18bef00d2161bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
+  Type: 1
+--- !u!114 &-5199449313680099891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643907849748072561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2e1cc021f916946ab5467068c7d7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirstAidKit
   Type: 1

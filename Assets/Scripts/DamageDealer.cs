@@ -26,10 +26,11 @@ public class DamageDealer : MonoBehaviour
         if (hit.collider != null)
         {
             IDamageable damageable = hit.collider.GetComponent<IDamageable>();
+            GameObject _target = hit.collider.GetComponent<GameObject>();
 
             if (damageable != null)
             {
-                damageable.TakeDamage(damage, gameObject);
+                damageable.TakeDamage(damage, _target);
 
                 _nextAttackTime = Time.time + attackDelay;
                 return true;
