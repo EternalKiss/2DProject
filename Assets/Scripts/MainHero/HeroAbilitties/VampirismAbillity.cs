@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class VampirismAbillity : MonoBehaviour
 {
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private Health _playerHealth;
-    [SerializeField] private SpriteRenderer _radiusSprite;
+    [SerializeField] private Viewer _viewer;
+    [SerializeField] private Image _barView;
 
     private float _duration = 6f;
     private float _cooldown = 4f;
@@ -19,9 +21,15 @@ public class VampirismAbillity : MonoBehaviour
 
     public void ActivateAbility()
     {
+        _barView.enabled = true;
+
         if (!_onCooldown && _abilityCoroutine == null)
         {
             _abilityCoroutine = StartCoroutine(Use());
+        }
+        else
+        {
+            Debug.Log("Способность перезаряжется!");
         }
     }
 
@@ -54,18 +62,32 @@ public class VampirismAbillity : MonoBehaviour
 
     private IEnumerator CooldownRoutine()
     {
-        yield return new WaitForSeconds(_cooldown);
+        float elapsedTime = 0f;
+        _viewer.CalculateCooldownView(elapsedTime, _cooldown);
+        _barView.enabled = true;
+
+        while (elapsedTime < _cooldown)
+        {
+            elapsedTime += Time.deltaTime;
+            _viewer.CalculateCooldownView(elapsedTime, _cooldown);
+
+            yield return null;
+        }
+
         _onCooldown = false;
+        _barView.enabled = false;
     }
 
     private IEnumerator Use()
     {
         _onCooldown = true;
         float elapsedTime = 0f;
-        ShowRadius();
+        _viewer.ShowRadiusAndDuration(_abilityRadius);
 
         while (elapsedTime < _duration)
         {
+            _viewer.CalculateDurationView(elapsedTime, _duration);
+
             IDamageable currentTarget = GetTarget();
 
             if (currentTarget != null && _playerHealth != null)
@@ -81,25 +103,7 @@ public class VampirismAbillity : MonoBehaviour
 
         _abilityCoroutine = null;
         StartCoroutine(CooldownRoutine());
-        HideRadius();
-    }
+        _viewer.HideRadiusAndDuration();
 
-    private void ShowRadius()
-    {
-        if (_radiusSprite == null) return;
-
-        _radiusSprite.enabled = true;
-
-        float spritePPU = _radiusSprite.sprite.pixelsPerUnit;
-        float Pi = 2f;
-        float scale = (Pi * _abilityRadius) / spritePPU;
-
-        _radiusSprite.transform.localScale = new Vector3(scale, scale, 1f);
-        _radiusSprite.color = new Color(1f, 1f, 1f, 0.4f);
-    }
-
-    private void HideRadius()
-    {
-        _radiusSprite.enabled = false;
     }
 }
