@@ -30,7 +30,7 @@ public class DamageDealer : MonoBehaviour
 
             if (damageable != null)
             {
-                damageable.TakeDamage(damage, _target);
+                damageable.TakeDamage(damage);
 
                 _nextAttackTime = Time.time + attackDelay;
                 return true;

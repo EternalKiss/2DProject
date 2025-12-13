@@ -57,7 +57,7 @@ public class Player : MonoBehaviour, IDamageable
         _characterAnimations.SetIsFlying(_groundDetector.IsFlying(_rigidbody));
     }
 
-    public void TakeDamage(float damage, GameObject attacker)
+    public void TakeDamage(float damage)
     {
         if (!IsAlive) return;
 
